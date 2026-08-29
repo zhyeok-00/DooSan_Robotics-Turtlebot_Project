@@ -1,0 +1,42 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# ROS 2 / colcon
+build/
+install/
+log/
+
+# JavaScript
+node_modules/
+dist/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+
+# Generated data and experiment output
+*.db
+*.db-shm
+*.db-wal
+runs/
+
+# Model weights (distribution rights must be verified separately)
+*.pt
+*.onnx
+*.engine
+
+# Local camera probe captures
+web/judge-vision/msmf_*.jpg
+web/judge-vision/probe_*.jpg
+
+# Runtime logs
+*.log

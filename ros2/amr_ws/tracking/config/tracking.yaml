@@ -1,0 +1,21 @@
+azimuth_tracker:
+  ros__parameters:
+    kp: 0.8
+    max_angular: 0.3
+    deadband: 0.05
+    timeout_sec: 0.5
+    control_hz: 20.0
+    max_angular_accel: 1.0
+    ema_alpha: 0.4
+    cmd_vel_topic: cmd_vel
+
+target_nav:
+  ros__parameters:
+    kp: 0.8
+    max_angular: 0.3
+    deadband: 0.05
+    linear_speed: 0.15
+    stop_distance: 1.0
+    signal_timeout: 3.0
+    control_hz: 20.0
+    cmd_vel_topic: cmd_vel

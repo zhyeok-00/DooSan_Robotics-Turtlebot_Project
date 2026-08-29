@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python-and-shell:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Install test dependencies
+        run: python -m pip install pytest
+      - name: Test ROS-independent control logic
+        working-directory: ros2/amr_ws/tracking
+        run: python -m pytest -q test/test_control.py test/test_mission_policy.py
+      - name: Test backend protocol
+        working-directory: web/backend
+        run: python -m pytest -q tests/test_protocol.py
+      - name: Compile Python sources
+        run: python -m compileall -q ros2 web hardware experiments
+      - name: Validate shell scripts
+        run: bash -n scripts/start_all.sh scripts/stop_all.sh
+
+  frontend-build:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        app: [frontend-team-pc, frontend-judge-pc]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: web/${{ matrix.app }}/package-lock.json
+      - working-directory: web/${{ matrix.app }}
+        run: npm ci
+      - working-directory: web/${{ matrix.app }}
+        run: npm run build
