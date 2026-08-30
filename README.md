@@ -122,25 +122,13 @@ COOLDOWN
 
 ## 🏗️ 시스템 아키텍처
 
-```text
-OAK-D / Phone Camera
-          │ image
-          ▼
-    YOLO Detector
-          │ detections / aim error / distance
-          ▼
-    Mission Manager ──────────────> Team Status ──> Team UI
-       │          │                                      │
-       │          ├─ WAIT_COMMAND ─> Azimuth Tracker     │ approval
-       │          ├─ TRACK ────────> Target Navigator    │
-       │          └─ RETURN ───────> Nav2                │
-       │                                                 │
-       └─ explore_lite / Nav2 ──> TurtleBot4 <───────────┘
-                       │
-                       └─ fire_ready ─> Arduino Shooter
-
-Judge Camera ─> Judge Vision ─> FastAPI/rosbridge ─> Judge UI
-```
+<p align="center">
+  <img
+    src="docs/images/amr-ros2-architecture.drawio.svg"
+    alt="SOCAMACA AMR ROS 2 시스템 아키텍처"
+    width="100%"
+  />
+</p>
 
 상태에 따라 속도 명령 발행 주체를 분리합니다.
 
