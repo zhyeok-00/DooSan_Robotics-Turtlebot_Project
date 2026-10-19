@@ -42,7 +42,7 @@ SOCAMACA는 자율주행 로봇, 객체 탐지, 웹 관제 화면과 Arduino 슈
 ## 🎬 시연 자료
 
 <p align="center">
-  <a href="docs/media/socamaca-demo.mp4">
+  <a href="https://raw.githubusercontent.com/zhyeok-00/DooSan_Robotics-Turtlebot_Project/main/docs/media/socamaca-demo.mp4">
     <img
       src="docs/images/socamaca-demo-thumbnail.jpg"
       alt="SOCAMACA TurtleBot4 시연 영상 재생"
